@@ -1,9 +1,7 @@
 name: PR Check WorkFlow
-
 on: 
     pull_request:
         branches: [main]
-
 jobs:
     pr-check:
         runs-on: ubuntu-latest
