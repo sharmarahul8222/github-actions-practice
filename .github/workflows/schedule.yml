@@ -1,0 +1,10 @@
+name: Schedule Trigger Workflow
+on:
+    schedule:
+        - cron: '0 0 * * *'
+jobs:
+    schedule-job:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Print message
+              run: echo "This workflow runs every day at midnight UTC"
