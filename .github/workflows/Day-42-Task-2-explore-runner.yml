@@ -1,0 +1,24 @@
+name: Pre-Installed Tool
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+
+    explore-runner:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Print Docker Version
+              run: docker --version
+
+            - name: Print Python Version
+              run: python --version
+
+            - name: Print Node Version
+              run: node --version
+
+            - name: Print Git Version
+              run: git --version
+              
