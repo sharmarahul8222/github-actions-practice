@@ -1,0 +1,26 @@
+name: Self Hosted Runner
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+
+    self-hosted-runner:
+        runs-on: self-hosted
+
+        steps:
+            - name: Code Checkout
+              uses: actions/codecheckout@v4
+
+            - name: Print Hostname
+              run: echo "Hostname:" hostname
+
+            - name: Print working directory
+              run: echo "Current Working Directory:" pwd
+
+            - name: Create a file
+              run: echo "Hello from self hosted runner" > my-runner.txt
+
+            - name: Verify File exists
+              run: ls -l
