@@ -23,7 +23,7 @@ jobs:
         run: echo "This step runs only on the main branch"
 
       - name: Intentional failure step
-        run: exit 1
+        run: echo "Not failed"
 
       - name: Run if previous step failed
         if: failure()
