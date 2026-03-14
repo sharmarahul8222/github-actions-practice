@@ -10,12 +10,12 @@ jobs:
         runs-on: ubuntu-latest
 
         outputs:
-            today_date: ${{steps.get-date.outputs.today}}
+            today_date: ${{ steps.get-date.outputs.today }}
 
         steps:
             - name: Get Today's Date
               id: get-date
-              run: echo "today= $(date)" >> GITHUB_OUTPUT
+              run: echo "today=$(date)" >> $GITHUB_OUTPUT
 
     print-date:
         runs-on: ubuntu-latest
