@@ -1,0 +1,26 @@
+name: Job Output
+
+on: 
+    push:
+        branches: [main]
+
+jobs:
+
+    generate-output:
+        runs-on: ubuntu-latest
+
+        outputs:
+            today_date: ${{steps.get-date.outputs.today}}
+
+        steps:
+            - name: Get Today's Date
+              id: get-date
+              run: echo "today= $(date)" >> GITHUB_OUTPUT
+
+    print-date:
+        runs-on: ubuntu-latest
+        needs: generate-output
+
+        steps:
+            - name: Print Today's Date
+              run: echo "Today's Date is ${{ needs.generate-output.outputs.today_date }}"
