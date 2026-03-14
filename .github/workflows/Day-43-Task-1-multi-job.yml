@@ -1,0 +1,27 @@
+name: Multi-Job Workflow
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build Step
+              run: echo "Building the app"
+
+    test:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test Step
+              run: echo "Running Test"
+
+    deploy:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy Step
+              run: echo "Deploying"
