@@ -20,6 +20,9 @@ jobs:
               run: echo "This steps runs only on main branch"
 
             - name: Intentional failure step
+              run: exit 1
+
+            - name: Run if previous step failed
               if: failure()
               run: echo "Previous step failed, so this step is running"
 
@@ -31,3 +34,4 @@ jobs:
             
             - name: Step after error
               run: echo "This is the step after error"
+              
