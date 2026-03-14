@@ -1,37 +1,40 @@
-name: Conditional Worflow
+name: Conditionals Example
 
 on:
-    push:
-        branches: [main]
-    pull_request:
+  push:
+    branches: [main]
+  pull_request:
 
 jobs:
-    conditional-job:
-        runs-on: ubuntu-latest
 
-        if: github.event_name == 'push'
+  conditional-job:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
+    # Job runs only on push events
+    if: github.event_name == 'push'
 
-            - name: Run only on main branch
-              if: github.ref == 'refs/heads/main'
-              run: echo "This steps runs only on main branch"
+    steps:
 
-            - name: Intentional failure step
-              run: exit 1
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - name: Run if previous step failed
-              if: failure()
-              run: echo "Previous step failed, so this step is running"
+      - name: Run only on main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "This step runs only on the main branch"
 
-            - name: Step with continue on error
-              continue-on-error: true
-              run: |
-                echo "This step will fail but workflow will continue"
-                exit 1
-            
-            - name: Step after error
-              run: echo "This is the step after error"
-              
+      - name: Intentional failure step
+        run: exit 1
+
+      - name: Run if previous step failed
+        if: failure()
+        run: echo "Previous step failed, so this step is running"
+
+      - name: Step with continue-on-error
+        continue-on-error: true
+        run: |
+          echo "This step will fail but workflow will continue"
+          exit 1
+
+      - name: Step after error
+        run: echo "Workflow continues even after the error"
+        
