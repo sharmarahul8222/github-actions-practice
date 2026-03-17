@@ -1,0 +1,2 @@
+#It is a liberary file jo python k program ka syntax check karti h
+flake8
