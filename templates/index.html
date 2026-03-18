@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Sharma | Cloud Engineer & DevRel</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+background:linear-gradient(135deg,#0f172a,#020617);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* glow background */
+body::before, body::after{
+content:"";
+position:fixed;
+width:400px;height:400px;
+border-radius:50%;
+filter:blur(120px);
+z-index:-1;
+}
+body::before{background:#06b6d4;top:-100px;left:-100px;opacity:.3}
+body::after{background:#a855f7;bottom:-100px;right:-100px;opacity:.3}
+
+nav{
+position:sticky;
+top:0;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.05);
+border-bottom:1px solid rgba(255,255,255,0.1);
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav a{
+color:#ccc;
+text-decoration:none;
+margin-left:25px;
+transition:.3s;
+}
+
+nav a:hover{color:#06b6d4}
+
+section{padding:100px 10%}
+
+.hero{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.hero h1{
+font-size:50px;
+font-weight:800;
+line-height:1.2;
+}
+
+.hero span{color:#06b6d4}
+
+.hero p{
+margin-top:20px;
+color:#cbd5e1;
+font-size:18px;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:12px 28px;
+border-radius:30px;
+background:linear-gradient(90deg,#06b6d4,#a855f7);
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:20px;
+padding:30px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,.5);
+}
+
+.grid-3{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.grid-2{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+h2{
+font-size:36px;
+margin-bottom:40px;
+}
+
+footer{
+text-align:center;
+padding:40px;
+border-top:1px solid rgba(255,255,255,0.1);
+color:#94a3b8;
+}
+
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+.hero h1{font-size:36px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h3>Rahul Sharma</h3>
+<div>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#blog">Writing</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<div>
+<h1>Cloud Engineer & <span>DevRel Professional</span></h1>
+
+<p>
+Microsoft Certified Azure Developer with experience migrating 100+ enterprise
+applications to Azure, building CI/CD pipelines, and contributing to cloud-native
+communities.
+</p>
+
+<a href="#contact" class="btn">Let's Connect</a>
+
+<p style="margin-top:18px;font-size:14px;color:#94a3b8">
+⚡ Built, lint checked, tested and deployed automatically using GitHub Actions.
+</p>
+
+<img
+src="https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO/actions/workflows/deploy.yml/badge.svg"
+alt="GitHub Actions Status"
+style="margin-top:8px">
+
+</div>
+
+<div class="card">
+<h3>Core Expertise</h3>
+
+<ul style="margin-top:18px;color:#cbd5e1;line-height:1.8">
+<li>Azure Cloud (AZ-204)</li>
+<li>Kubernetes & Cloud Native</li>
+<li>CI/CD & DevOps</li>
+<li>Azure Data Factory</li>
+<li>Technical Writing (LWKD)</li>
+</ul>
+
+</div>
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+
+<div class="card">
+
+<p style="color:#cbd5e1;line-height:1.8;font-size:18px">
+I work on cloud migration, DevOps automation and scalable infrastructure.
+I have migrated 100+ enterprise applications to Azure, improved performance
+by 40–45%, and enhanced ETL workflows by 70%. I also contribute to the
+Kubernetes LWKD newsletter and actively participate in open-source communities.
+</p>
+
+</div>
+</section>
+
+<section id="projects">
+<h2>Highlighted Work</h2>
+
+<div class="grid-3">
+
+<div class="card">
+<h3>Azure Migration</h3>
+<p style="margin-top:12px;color:#cbd5e1">
+Migrated 100+ enterprise applications from on-premises to Azure cloud.
+</p>
+</div>
+
+<div class="card">
+<h3>Kubernetes LWKD</h3>
+<p style="margin-top:12px;color:#cbd5e1">
+Contributor writing weekly updates on Kubernetes development and releases.
+</p>
+</div>
+
+<div class="card">
+<h3>Hacktoberfest</h3>
+<p style="margin-top:12px;color:#cbd5e1">
+Earned Level 4 badge through open-source contributions to cloud projects.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="blog">
+<h2>Writing & Community</h2>
+
+<div class="grid-2">
+
+<div class="card">
+<h3>Hashnode Blog</h3>
+
+<p style="margin-top:12px;color:#cbd5e1">
+Articles on Azure migration strategies, DevOps practices and cloud architecture.
+</p>
+
+<a href="https://migrationapproaches.hashnode.dev/on-prem-to-cloud-migration-approaches"
+target="_blank"
+class="btn"
+style="margin-top:18px">
+Read Article
+</a>
+
+</div>
+
+<div class="card">
+<h3>Kubernetes LWKD</h3>
+
+<p style="margin-top:12px;color:#cbd5e1">
+Weekly contributor covering Kubernetes features, releases and community updates.
+</p>
+
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+
+<div class="card" style="text-align:center">
+
+<p style="color:#cbd5e1;font-size:18px">
+Open to DevRel collaborations, cloud-native projects and community events.
+</p>
+
+<p style="margin-top:18px;color:#06b6d4;font-weight:600">
+Email: your-email@example.com
+</p>
+
+</div>
+</section>
+
+<footer>
+© 2026 Rahul Sharma — Built with Cloud & Community ❤️
+</footer>
+
+</body>
+</html>
