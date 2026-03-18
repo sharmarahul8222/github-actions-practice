@@ -1,8 +1,7 @@
 name: Docker Publish
-
 on:
     push:
-        branches: [main]
+
 jobs:
     docker-build:
         runs-on: ubuntu-latest
@@ -14,6 +13,7 @@ jobs:
               run: echo "SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_ENV
 
             - name: Login to DockerHub
+              if: github.ref == 'refs/heads/main'
               uses: docker/login-action@v3
               with:
                 username: ${{ secrets.DOCKER_USERNAME }}
@@ -23,8 +23,8 @@ jobs:
               uses: docker/build-push-action@v6
               with:
                 context: .
-                push: true
+                push: ${{ github.ref == 'refs/heads/main' }}
                 tags: |
-                    ${{ secrets.DOCKER_USERNAME }}/github-actions-app:latest
-                    ${{ secrets.DOCKER_USERNAME }}/github-actions-app:sha-${{ env.SHORT_SHA }}
+                    ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:latest
+                    ${{ secrets.DOCKER_USERNAME }}/github-actions-practice:sha-${{ env.SHORT_SHA }}
                     
