@@ -1,0 +1,40 @@
+name: Reusable Build Workflow
+
+on:
+    workflow_call:
+        inputs:
+            app_name:
+                description: "Rahul Portfolio"
+                type: string
+                required: true
+            environment:
+                description: "Deployment Environment"
+                required: true
+                type: string
+                default: staging
+        
+        secrets:
+            docker_token:
+                required: true    
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+
+            - name: Print Build Information
+              run: echo "App name is ${{ inputs.app_name }} for ${{ inputs.environment }}"
+
+            - name: Verify Secrets
+              env:
+                DOCKER_TOKEN: ${{ secrets.docker_token }}
+              run: |
+                if [ -n DOCKER_TOKEN ]; then
+                    echo "Docker token is set true"
+                else
+                    echo "DOcker token is not set"
+                fi
+
+
