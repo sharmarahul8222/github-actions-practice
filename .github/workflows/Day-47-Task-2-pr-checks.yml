@@ -1,0 +1,39 @@
+name: PR Validation Workflow
+
+on:
+    pull_request:
+        branches: [main]
+
+jobs:
+    file-size-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check File Size
+              run: |
+                LARGE_FILES=$(find . -type f -not -path '*/.*' -size +1M)
+                if [ -n "$LARGE_FILES" ]; then
+                    echo "Error: The following files exceed 1MB: $LARGE_FILES"
+                    exit 1
+                fi
+
+    branch-name-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Validate Branch Name
+              run: |
+               BRANCH_NAME="${{ github.head_ref }}"
+               if [[ ! "$BRANCH_NAME" =~ ^(feature/|fix/|docs/).* ]]; then
+                    echo "Error: Branch name '$BRANCH_NAME' does not follow required pattern."
+                    echo "Expected: feature/*, fix/*, or docs/*"
+                    exit 1
+               fi
+    pr-body-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check PR Description
+              run: |
+                if [ -z "${{ github.event.pull_request.body }}" ]; then
+                    echo "Warning: PR description is empty"
+                else
+                    echo "PR description is provided"
+                fi
