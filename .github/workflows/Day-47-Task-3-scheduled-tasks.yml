@@ -1,0 +1,21 @@
+name: Schedule Task
+
+on:
+    schedule:
+        - cron: '30 2 * * 1'      # Every Monday at 02:30 AM UTC
+        - cron: '0 */6 * * *'
+    workflow_dispatch:
+
+jobs:
+    schedule-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Trigger Type
+              run: |
+                 echo "Scheduled time triggered: ${{ github.event.schedule }}"
+                 echo "Triggered by manual dispatch? ${{ github.event_name == 'workflow_dispatch' }}"
+
+            - name: Health Check API
+              run: |
+                curl -Is https://google.com | head -n 1
+                
