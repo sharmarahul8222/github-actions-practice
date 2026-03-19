@@ -15,14 +15,27 @@ on:
         
         secrets:
             docker_token:
-                required: true    
+                required: true  
+        outputs:
+            build_version: 
+                description: Generated Build Version
+                value: ${{ jobs.build.outputs.build_version }}  
 
 jobs:
     build:
         runs-on: ubuntu-latest
+        outputs:
+            build_version: ${{ steps.set_verion.outputs.build_version }} 
         steps:
             - name: Code Checkout
               uses: actions/checkout@v4
+
+            - name: Generate Build Version
+              id: set_version
+              run: |
+                SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+                VERSION="v1.0-$SHORT_SHA"
+                echo "build version = $VERSION" >> $GITHUB_OUTPUT
 
             - name: Print Build Information
               run: echo "App name is ${{ inputs.app_name }} for ${{ inputs.environment }}"
